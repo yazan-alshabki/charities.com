@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Log-In</title>
+        <link rel="stylesheet" href="css/log-in_style.css" />
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo&family=Coming+Soon&family=Lemonada&family=Libre+Baskerville&family=Montserrat&family=Readex+Pro&family=Sacramento&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Font Awsome script -->
+        <link rel="stylesheet" href="font awesome lib/css/all.css" />
+    </head>
+    <body>
+        <div class="leftBack">
+            <h1 class="site-name back-h1">HopeHive</h1>
+            <img
+                class="sketch"
+                src="images/simple-removebg.png"
+                alt="sketch.png"
+            />
+        </div>
+        <div class="rightBack"></div>
+        <div class="shadow"></div>
+
+        <div class="main">
+            <div class="left-main">
+                <h1 class="site-name">HopeHive</h1>
+                <img
+                    class="sketch"
+                    src="images/simple-removebg.png"
+                    alt="sketch.png"
+                />
+            </div>
+            <div class="login-box">
+                <h1 class="login">Log-in</h1>
+                <form>
+                    <div class="container">
+                        <input
+                            id="email"
+                            name="email"
+                            type="text"
+                            placeholder="Email"
+                            title="Enter your Email address"
+                        />
+                        <i class="fa-regular fa-envelope envelop-icon"></i>
+                    </div>
+
+                    <div class="email-error error"></div>
+                    <div class="container">
+                        <input
+                            type="password"
+                            name="password"
+                            class="password"
+                            placeholder="Password"
+                            title="Enter your password"
+                        />
+                        <i
+                            id="password-icon"
+                            class="fa-regular fa-eye show-password-icon"
+                        ></i>
+                    </div>
+                    <div class="pass-error error"></div>
+                    <input type="submit" value="Log-in" />
+                    <p>Don't have an account? <a href="/signup">Register</a></p>
+                </form>
+            </div>
+        </div>
+        <script>
+            const form = document.querySelector("form");
+            const emailError = document.querySelector(".email-error");
+            const passwordError = document.querySelector(".pass-error");
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                // reset error
+                emailError.textContent = "";
+                passwordError.textContent = "";
+
+                // get the value
+                const email = form.email.value;
+                const password = form.password.value;
+                try {
+                    const result = await fetch("/login", {
+                        method: "POST",
+                        body: JSON.stringify({ email, password }),
+                        headers: { "Content-Type": "application/json" },
+                    });
+                    const data = await result.json();
+                    if (data.error) {
+                        emailError.textContent = data.error.email;
+                        passwordError.textContent = data.error.password;
+                    }
+                    if (data.user) {
+                        location.assign("/");
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+        </script>
+
+        <script src="js/login.js"></script>
+    </body>
+</html>

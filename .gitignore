@@ -1,0 +1,10 @@
+# ignore all.json files
+
+*.json
+*.env
+*.editorconfig
+*.ini
+font awesome lib
+node_modules
+
+

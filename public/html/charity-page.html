@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity Page</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo&amp;family=Coming+Soon&amp;family=Lemonada&amp;family=Libre+Baskerville&amp;family=Montserrat&amp;family=Readex+Pro&amp;family=Sacramento&amp;display=swap"
+    rel="stylesheet" />
+  <!-- My Style -->
+  <link rel="stylesheet" href="charity-page_style.css" />
+  <link rel="stylesheet" href="Footer.css" />
+  <link rel="stylesheet" href="NavigationBar.css" />
+  <!-- Bootstrap CDN-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="font awesome lib/css/all.min.css" />
+</head>
+
+<body id="page-top">
+  <nav id="mainNav" class="navbar navbar-light navbar-expand-lg fixed-top navigation-clean-button ">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">HopeHive</a>
+      <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-solid fa-bars tog"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link" href="messages.html">Messages</a>
+          </li>
+        </ul>
+        <form id="search-field" class="d-flex me-1" role="search">
+          <input id="search-input" class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <button id="searchBtn" class="btn" type="submit"><i id="search-icon" class="fa-solid fa-magnifying-glass"
+              style="color: #f6f6f6;"></i></button>
+        </form>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"> <a id="user-email" class="nav-link" href="#">Anas Abdullah</a></li>
+          <li class="nav-item"> <a id="logout" class="btn btn-light action-button" role="button" href="#">Log-out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="shadow"></div>
+  <header class="first text-center">
+    
+    <div class="container">
+      <img class="d-block mx-auto mb-5 logo w-50" src="images/v911-a-01-b.jpg" />
+      <h1 class="mb-5">Charity Name</h1>
+    </div>
+  </header>
+  <section class="about">
+    <div class="container text-center">
+      <h2 class="text-uppercase">About us</h2>
+      <div class="mx-auto">
+        <p class="fs-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere turpis id ipsum mollis, sed facilisis
+          nibh bibendum. Pellentesque vitae laoreet felis. Duis at lorem nec dolor porttitor sodales in eu ante.
+          Pellentesque vitae neque sed neque maximus vestibulum. Mauris id leo id mi vulputate vehicula. In eleifend
+          tellus magna, ut pellentesque leo posuere vitae. Praesent quis augue sodales, maximus orci vitae, vulputate
+          massa. Pellentesque sed quam quis dui porttitor dapibus interdum vel nunc. Fusce in ornare magna, sed tempor
+          nunc. Aenean ut nisl dolor. Donec nec semper ante.
+        </p>
+      </div>
+    </div>
+  </section>
+<section>
+  <div class="container text-center">
+    <div class = "row p-5">
+      <div id = "foodDonationButton" class="col flip-card align-self-start">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/photo_2023-06-17_14-35-20.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+              Praesent aliquam in tellus eu gravida. Aliquam varius finibus est,
+              interdum justo suscipit id.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col flip-card align-self-center">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/photo_2023-06-17_14-35-25.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+              Praesent aliquam in tellus eu gravida. Aliquam varius finibus est,
+              interdum justo suscipit id.</p>
+          </div>
+        </div>
+      </div>
+   
+      <div class="col flip-card align-self-end">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/photo_2023-06-17_14-35-23.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus.
+              Praesent aliquam in tellus eu gravida. Aliquam varius finibus est,
+              interdum justo suscipit id.</p>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+</section>
+
+  
+
+  <footer id="main-footer" class="footer">
+    <div class="social">
+      <a href=""><i class="fa-brands fa-facebook-f"></i></a>
+      <a href=""><i class="fa-brands fa-twitter"></i></a>
+      <a href=""><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <ul class="footerLinks list-inline">
+      <li class="list-inline-item"><a href="">About</a></li>
+      <li class="list-inline-item"><a href="">Terms</a></li>
+      <li class="list-inline-item"><a href="">Privacy Policy</a></li>
+    </ul>
+    <p class="copyright">HopeHive © 2023</p>
+    <div class="scroll-to-top position-fixed rounded">
+      <a class="text-center d-block rounded text-white" href="#page-top"><i class="fa fa-chevron-up"></i></a>
+  </footer>
+
+  <div id="FoodDonationService" class="p-0">
+    <button id = "closeForm"><i class="fa-solid fa-xmark"></i></button>
+    <div class = "hintmsg">
+      <p class="hint p-4 fs-5">
+        Lorem ipsum dolor sit amet, consectetur adipiscing
+        elit. Aenean sodales euismod urna, lacinia condimentum ex hendrerit id. Orci varius natoque
+        penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer ultricies ligula sed
+        mauris aliquam, a tincidunt ipsum posuere. Aliquam erat volutpat. Proin tempor ante id urna
+        bibendum pharetra. Donec volutpat, eros sollicitudin rhoncus vestibulum, diam dui venenatis leo,
+        at pellentesque justo velit non ex. Aliquam mi velit, egestas sed placerat sed, imperdiet sed
+        enim. Aliquam erat volutpat.
+      </p>
+      <div class = "text-center">
+        <button class="mx-auto mb-3 continue">
+          continue <i class="arrowIcon fa-solid fa-arrow-right-long"></i>
+        </button>
+      </div>
+    </div>
+    <form class="foodDonationForm p-3">
+      <div class="container">
+          <div class="position-relative">
+            <label class="form-label d-inline me-4" for="type">Select food type:</label>
+            <select class = "form-control p-1 d-inline w-50 mb-2" name="type" id="type">
+              <option value="Rice">Rice</option>
+              <option value="Oil">Oil</option>
+              <option value="CannedFood">Canned food</option>
+              <option value="AddNewOption">Add a new option</option>
+            </select>
+            
+            <input class="form-control" type="text" id="newOption" name="newOption" required>
+            <span class="error-message">Please enter a food type</span>
+          </div>
+        
+        <div class="position-relative">
+          <label class="form-label" for="quantity">Quantity:</label>
+          <input class="form-control" type="tel" id="quantity" name="quantity" required>
+          <span class="error-message">Please enter a number</span>
+        </div>
+          <div class="">
+            <label id="PerishabilityLabel" class="form-label me-5" for="Perishability">Perishability:</label>
+            <select id="Perishability" class="p-1 d-inline form-control w-50" name="Perishability">
+              <option value="Perishable" selected>Perishable</option>
+              <option value="Non-perishable">Non-perishable</option>
+            </select>
+          </div>
+          <div class="mx-auto submit">
+            <button type="submit">Send form <i class="fa-solid fa-paper-plane paperPlan"></i></button>
+           
+            
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- JQuery Google CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+  <!-- My JS -->
+  <script src="navigationBar.js"></script>
+  <script src="charity-page.js"></script>
+</body>
+
+</html>

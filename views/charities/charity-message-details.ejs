@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Messages-details</title>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin=""
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo&amp;family=Coming+Soon&amp;family=Lemonada&amp;family=Libre+Baskerville&amp;family=Montserrat&amp;family=Readex+Pro&amp;family=Sacramento&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- My Style -->
+        <link rel="stylesheet" href="/css/message-details_style.css" />
+        <link rel="stylesheet" href="/css/Footer.css" />
+        <link rel="stylesheet" href="/css/NavigationBar.css" />
+        <!-- Bootstrap CDN-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+        />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/font awesome lib/css/all.min.css" />
+    </head>
+
+    <body id="page-top">
+        <%- include('../partials/navbar') -%>
+        <div
+            class="message-details"
+            data-message="<%= message.id %>"
+            data-charity="<%= message.charityId %>"
+            data-object="<%= message.objectId %>"
+        >
+            <div class="container">
+                <form class="formMessage">
+                    <div class="form-groups">
+                        <label for="from">From:</label>
+                        <div class="d-flex">
+                            <p class="form-control from" name="from">
+                                <%= message.from %>
+                            </p>
+
+                            <div class="sender-profile">
+                                <a
+                                    class="text-center rounded"
+                                    href="/profile/<%=message.fromId%>"
+                                >
+                                    <i class="fa-solid fa-user"></i
+                                    ><i class="fa-solid fa-arrow-right"></i
+                                ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-groups">
+                        <label for="subject">Subject:</label>
+                        <p class="form-control subject" name="subject">
+                            <%= message.subject %>
+                        </p>
+                    </div>
+                    <div class="form-group w-100">
+                        <label for="content">Content:</label>
+                        <pre class="form-control content" name="content">
+<%= message.content %></pre
+                        >
+                    </div>
+                    <% if(( message.subject === "Training Request")&&
+                    acceptOrRefuse === "NOT RESPONSE" ){%>
+                    <div class="col position-relative">
+                        <label class="form-label me-3" for="program"
+                            >Your Program:
+                        </label>
+                        <input
+                            class="form-control-sm"
+                            type="file"
+                            name="program"
+                            id="program"
+                        />
+                        <span class="error-message" id="program-error"></span>
+                    </div>
+                    <% } if(( message.subject === "Donation Request" ||
+                    message.subject=== "Food Request"||
+                    message.subject==="Personal-Need Request"||
+                    message.subject=== "Medicine Request"||message.subject===
+                    "Medical Supplies Request") && !response &&
+                    acceptOrRefuse=== "NOT RESPONSE"){ %>
+                    <button
+                        type="submit"
+                        class="btn mt-3 me-3 mb-3"
+                        id="accept"
+                    >
+                        <i class="fa-regular fa-circle-check me-2"></i>Accept
+                    </button>
+                    <button type="button" class="btn mt-3 mb-3" id="reject">
+                        <i class="fa-solid fa-rectangle-xmark me-2 me-3"></i
+                        >Reject
+                    </button>
+
+                    <% }else if(!response && (acceptOrRefuse === "ACCEPTED" ||
+                    acceptOrRefuse === "NOT RESPONSE") ){ %>
+                    <button
+                        type="submit"
+                        class="btn mt-3 me-3 mb-3"
+                        id="confirm"
+                    >
+                        <i class="fa-regular fa-circle-check me-2"></i>Confirm
+                    </button>
+                    <button type="button" class="btn mt-3 mb-3" id="reject">
+                        <i class="fa-solid fa-rectangle-xmark me-2"></i>Reject
+                    </button>
+                    <% } else if(!response && acceptOrRefuse==="REJECTED"){ %>
+                    <h2 class="purble mb-3 mt-3">
+                        This request was rejected
+                        <i class="fa-solid fa-rectangle-xmark me-2"></i>
+                    </h2>
+                    <% }else if(!response && acceptOrRefuse==="CONFIRMED"){%>
+                    <h2 class="purble mb-3 mt-3">
+                        This request was confirmed
+                        <i class="fa-regular fa-circle-check me-2"></i>
+                    </h2>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+
+        <%- include('../partials/footer') -%>
+        <script>
+            const confirm = document.querySelector("#confirm");
+            const reject = document.querySelector("#reject");
+            const from = document.querySelector(".from").textContent;
+            const divForIdMessage = document.querySelector(".message-details");
+            const id = divForIdMessage.getAttribute("data-message");
+            const charity = divForIdMessage.getAttribute("data-charity");
+            const object = divForIdMessage.getAttribute("data-charity");
+            const subject = document.querySelector(".subject");
+            const accept = document.querySelector("#accept");
+            const programError = document.querySelector("#program-error");
+
+            if (subject.textContent.trim() === "Training Request") {
+                if (programError.textContent === "") {
+                    document.getElementById("program-error").style.display =
+                        "none";
+                }
+                if (confirm) {
+                    confirm.addEventListener("click", async (event) => {
+                        event.preventDefault();
+                        try {
+                            const program =
+                                document.querySelector("#program").files[0];
+                            let validate = "";
+                            if (!program) {
+                                validate = `Please enter a program to send it to user`;
+                            } else {
+                                let name = program.name;
+                                if (
+                                    name.endsWith(".jpg") ||
+                                    name.endsWith(".jpeg") ||
+                                    name.endsWith(".png") ||
+                                    name.endsWith(".gif")
+                                ) {
+                                    validate = "";
+                                } else {
+                                    validate = `Please enter a valid image (.jpg or .jpeg or .png or .gif)`;
+                                }
+                            }
+                            console.log(validate);
+                            if (validate !== "") {
+                                programError.textContent = validate;
+                                $("#program-error").fadeIn();
+                                return new Error("error");
+                            } else {
+                                $("#program-error").hide();
+                            }
+                            let formData = new FormData();
+
+                            formData.append("program", program);
+                            formData.append("id", id);
+                            formData.append("subject", subject.value);
+                            formData.append("accept", "CONFIRM");
+
+                            let result = await fetch(
+                                `/charities/${charity}/messages/${id}`,
+                                {
+                                    method: "POST",
+                                    body: formData,
+                                }
+                            );
+                            window.location.href = `/charities/${charity}/messages/${id}`;
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+                if (reject) {
+                    reject.addEventListener("click", async (event) => {
+                        event.preventDefault();
+                        try {
+                            let formData = new FormData();
+                            formData.append("id", id);
+                            formData.append("subject", subject.value);
+                            formData.append("accept", "REJECT");
+                            let result = await fetch(
+                                `/charities/${charity}/messages/${id}`,
+                                {
+                                    method: "POST",
+                                    body: formData,
+                                }
+                            );
+                            window.location.href = `/charities/${charity}/messages/${id}`;
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            } else {
+                if (confirm) {
+                    confirm.addEventListener("click", async (event) => {
+                        event.preventDefault();
+                        try {
+                            let result = await fetch(
+                                `/charities/${charity}/messages/${id}`,
+                                {
+                                    method: "PUT",
+                                    body: JSON.stringify({
+                                        id: id,
+                                        accept: "CONFIRM",
+                                        subject: subject.textContent.trim(),
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                }
+                            );
+                            window.location.href = `/charities/${charity}/messages/${id}`;
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+                if (accept) {
+                    accept.addEventListener("click", async (event) => {
+                        event.preventDefault();
+                        try {
+                            let result = await fetch(
+                                `/charities/${charity}/messages/${id}`,
+                                {
+                                    method: "PUT",
+                                    body: JSON.stringify({
+                                        id: id,
+                                        accept: "ACCEPT",
+                                        subject: subject.textContent.trim(),
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                }
+                            );
+                            window.location.href = `/charities/${charity}/messages/${id}`;
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+                if (reject) {
+                    reject.addEventListener("click", async (event) => {
+                        event.preventDefault();
+                        try {
+                            let result = await fetch(
+                                `/charities/${charity}/messages/${id}`,
+                                {
+                                    method: "PUT",
+                                    body: JSON.stringify({
+                                        id: id,
+                                        accept: "REJECT",
+                                        subject: subject.textContent.trim(),
+                                    }),
+                                    headers: {
+                                        "Content-Type": "application/json",
+                                    },
+                                }
+                            );
+                            window.location.href = `/charities/${charity}/messages/${id}`;
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+            }
+        </script>
+        <!-- JQuery Google CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+            integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+            crossorigin="anonymous"
+        ></script>
+        <!-- My JS -->
+        <script src="/js/navigationBar.js"></script>
+        <script src="/js/message-details.js"></script>
+    </body>
+</html>

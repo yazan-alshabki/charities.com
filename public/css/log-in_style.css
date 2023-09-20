@@ -1,0 +1,241 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    font-family: "Cairo", sans-serif;
+    position: relative;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 1px solid #f6f2f2;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 3% 0%;
+    padding: 2.5%;
+    width: 100%;
+    display: inline-block;
+    background-color: #7c3e66;
+    color: white;
+    font-family: "Cairo", sans-serif;
+    font-size: 1vw;
+}
+
+input::placeholder {
+    color: #f6f2f2;
+    font-size: 1vw;
+}
+
+h1 {
+    color: #f6f2f2;
+    margin-bottom: 3%;
+    font-family: "Libre Baskerville", serif;
+    text-align: center;
+    font-weight: bolder;
+}
+p {
+    margin-top: 3%;
+    margin-bottom: 0px;
+    color: #f6f2f2;
+    font-size: 1vw;
+}
+
+a {
+    margin-left: 1%;
+    text-decoration: none;
+    color: #37306b;
+    font-size: 1vw;
+    font-weight: bold;
+}
+a:hover {
+    color: #ffbaba;
+}
+input[type="submit"] {
+    background-color: #f6f2f2;
+    border: none;
+    border-radius: 20px;
+    color: #7c3e66;
+    cursor: pointer;
+    font-size: 1.2vw;
+    margin-top: 17%;
+    padding: 2%;
+    width: 45%;
+    height: 20%;
+    font-family: "Cairo", sans-serif;
+    font-weight: bolder;
+}
+
+input[type="password"],
+input[type="text"] {
+    padding-right: 12%;
+}
+
+.error {
+    color: #ef3a3a;
+    margin-left: 2%;
+    text-align: left;
+    font-family: "Readex Pro", sans-serif;
+    font-size: 0.95vw;
+    font-weight: bold;
+}
+
+.show-password-icon {
+    cursor: pointer;
+    position: absolute;
+    color: #f6f2f2;
+    top: 40%;
+    right: 4%;
+    font-size: 1vw;
+}
+
+.envelop-icon {
+    position: absolute;
+    color: #f6f2f2;
+    top: 40%;
+    right: 4%;
+    font-size: 1vw;
+}
+
+.container {
+    position: relative;
+}
+.rightBack {
+    background-color: #7c3e66;
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+.leftBack {
+    background-color: #f6f2f2;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+.shadow {
+    background-color: rgba(52, 51, 51, 0.63);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+.main {
+    width: 66%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    top: 12vh;
+    left: 17%;
+    box-shadow: 25px 30px 70px rgb(27, 26, 26);
+}
+
+.left-main {
+    background-color: #f6f2f2;
+    width: 50%;
+    position: relative;
+}
+.left-main,
+.login-box {
+    flex: 1;
+    min-width: 0;
+    padding: 20px;
+}
+.login-box {
+    width: 30%;
+
+    text-align: center;
+    background-color: #7c3e66;
+}
+.login {
+    font-size: 1.8vw;
+    color: #f6f2f2;
+    margin-top: 13%;
+    margin-bottom: 15%;
+}
+.site-name {
+    font-size: 4vw;
+    color: #7c3e66;
+}
+.back-h1 {
+    font-size: 7.5vw;
+}
+.sketch {
+    position: absolute;
+    bottom: 0px;
+    left: 0%;
+    width: 100%;
+    height: 80%;
+}
+@media screen and (max-width: 600px) {
+    .site-name {
+        margin-top: 5px;
+        font-size: 35px;
+    }
+    .login {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        font-size: 20px;
+    }
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+    .main {
+        margin: 0px;
+
+        top: 0px;
+        left: 0px;
+        width: 90%;
+        height: 100vh;
+        flex-direction: column;
+        box-shadow: none;
+    }
+    .left-main {
+        height: 10%;
+        width: 100%;
+        display: block;
+    }
+    .login-box {
+        height: 90%;
+        width: 100%;
+        border: none;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+        font-size: 15px;
+    }
+    input::placeholder {
+        font-size: 0.9rem;
+    }
+    .error {
+        font-size: 0.7rem;
+    }
+    p {
+        font-size: 0.875rem;
+    }
+    a {
+        font-size: 0.875rem;
+    }
+    .show-password-icon {
+        font-size: 1rem;
+    }
+    .envelop-icon {
+        font-size: 1rem;
+    }
+    .leftBack,
+    .rightBack,
+    .shadow {
+        display: none;
+    }
+    .sketch {
+        bottom: 0;
+        left: 1%;
+        right: 1%;
+        width: 90%;
+        height: 90%;
+    }
+}
+
+input[type="submit"]:hover {
+    background-color: #ffbaba;
+}

@@ -1,0 +1,98 @@
+<nav
+    id="mainNav"
+    class="navbar navbar-light navbar-expand-lg fixed-top navigation-clean-button"
+>
+    <div class="container">
+        <a class="navbar-brand" href="/">HopeHive</a>
+        <button
+            data-bs-toggle="collapse"
+            class="navbar-toggler position-relative"
+            data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <% if(numberOfNewMessages > 0){ %>
+
+            <div class="dot toggle-dot"><%= numberOfNewMessages %></div>
+
+            <% } %>
+
+            <span class="fa fa-solid fa-bars tog"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <% if(user){ %>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link messages-link" href="/messages"
+                        >Messages <% if(numberOfNewMessages > 0){ %>
+                        <div class="dot"><%= numberOfNewMessages %></div>
+                        <% } %>
+                    </a>
+                </li>
+                <% } %>
+            </ul>
+            <% if(idMessageInUrl){ %>
+            <form id="search-field" class="d-flex me-1" role="search">
+                <input
+                    id="search-input"
+                    class="form-control"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                />
+                <button id="searchBtn" class="btn" type="submit">
+                    <i
+                        id="search-icon"
+                        class="fa-solid fa-magnifying-glass"
+                        style="color: #f6f6f6"
+                    ></i>
+                </button>
+            </form>
+            <% } %>
+            <ul class="navbar-nav ms-auto">
+                <% if(user){ %>
+                <li class="nav-item">
+                    <a
+                        id="user-email"
+                        class="nav-link"
+                        href="/profile/<%= user.id %>"
+                        ><%= `${user.firstName} ${user.lastName}` %></a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        id="logout"
+                        class="btn btn-light action-button"
+                        role="button"
+                        href="/logout"
+                        >Log-out</a
+                    >
+                </li>
+                <% }else { %>
+                <li class="nav-item">
+                    <a
+                        id="login"
+                        class="btn btn-light action-button me-3"
+                        role="button"
+                        href="/login"
+                        >Log-in</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a
+                        id="logout"
+                        class="btn btn-light action-button"
+                        role="button"
+                        href="/signup"
+                        >sign-up</a
+                    >
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>

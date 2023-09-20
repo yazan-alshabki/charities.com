@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>HomePage</title>
+        <!-- Google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin=""
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cairo&amp;family=Coming+Soon&amp;family=Lemonada&amp;family=Libre+Baskerville&amp;family=Montserrat&amp;family=Readex+Pro&amp;family=Sacramento&amp;display=swap"
+            rel="stylesheet"
+        />
+        <!-- My Style -->
+        <link rel="stylesheet" href="/css/home_style.css" />
+        <link rel="stylesheet" href="/css/Footer.css" />
+        <link rel="stylesheet" href="/css/NavigationBar.css" />
+        <link rel="stylesheet" href="/css/Charities-list.css" />
+        <!-- Bootstrap CDN-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+        />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="font awesome lib/css/all.min.css" />
+    </head>
+
+    <body
+        id="page-top"
+        data-bs-spy="scroll"
+        data-bs-target="#mainNav"
+        data-bs-offset="72"
+    >
+        <%- include('partials/navbar') -%>
+
+        <section class="charities-list">
+            <div class="shadow"></div>
+
+            <div class="container">
+                <div class="intro">
+                    <h2 class="text-center">Charities</h2>
+                </div>
+                <div class="filter">
+                    <select id="filterCriteria" class="p-2 mb-3">
+                        <option value="All">All</option>
+                        <option value="Hunger Releif">Hunger Releif</option>
+                        <option value="Health">Health</option>
+                        <option value="Personal-need">Personal-need</option>
+                    </select>
+                </div>
+                <p class="notFound fs-1 text-center"></p>
+                <div class="row charities">
+                    <% if(charities) { charities.forEach( (charity)=>{ %>
+                    <%if(charity.pending !== "pending") {%>
+                    <div class="col-sm-6 col-lg-3 item" id="<%=charity._id%>">
+                        <img
+                            class="img-fluid"
+                            src="/uploads/<%= charity.logo %>"
+                        />
+                        <h3 class="name"><%= charity.charityName %></h3>
+                        <h6 class="category"><%= charity.charityType %></h6>
+                        <p class="description"><%= charity.description%></p>
+                    </div>
+                    <% } })} %> <% if(user && user.accountType==="Donor"){ %>
+                    <div class="col-sm-6 col-lg-3 add-charity-item">
+                        <button id="myButton" class="plus-icon">
+                            <i class="fas fa-plus"></i> Add Charity
+                        </button>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+        <%- include('partials/footer') -%>
+
+        <div id="myForm" class="add-charity p-0">
+            <button id="closeForm">
+                <i id="closeFormTwo" class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="hintmsg">
+                <p class="hint p-4 fs-6">
+                    If you want to add a charity to our website you need to
+                    provide a government-certified license and we will response
+                    to your request within two days.<br />
+                    There are three types of charities that you can add:<br />
+                    1) Hunger relief charity which provides food related
+                    services.<br />
+                    2) Health charity which provides Medicine and health related
+                    services.<br />
+                    3) Personal Needs charity which provides Personal need
+                    services.<br />
+                    By continuing, you acknowledge that you have read and agreed
+                    to our
+                    <a href="/policy" target="_blank">Privacy Policy</a> and
+                    <a href="/terms" target="_blank">Terms & Conditions</a>.
+                </p>
+                <div class="text-center">
+                    <button class="mx-auto mb-3 continue">
+                        continue
+                        <i class="arrowIcon fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+            <form class="addCharityForm">
+                <div class="container">
+                    <div class="row row-cols-2">
+                        <div class="col position-relative">
+                            <label class="form-label" for="name"
+                                >Charity Name:</label
+                            >
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="name"
+                                name="name"
+                            />
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+                        <div class="col position-relative">
+                            <label class="form-label" for="phone"
+                                >Phone Number:</label
+                            >
+                            <input
+                                class="form-control"
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                            />
+                            <span class="error-message" id="phone-error"></span>
+                        </div>
+                    </div>
+                    <div class="row row-cols-2">
+                        <div class="col position-relative">
+                            <label class="form-label" for="bankAccount"
+                                >Bank account:</label
+                            >
+                            <input
+                                class="form-control"
+                                type="text"
+                                id="bankAccount"
+                                name="bankAccount"
+                            />
+                            <span
+                                class="error-message"
+                                id="bankAccount-error"
+                            ></span>
+                        </div>
+                        <div class="col">
+                            <label
+                                id="charity-type-label"
+                                class="form-label d-block"
+                                for="Charity-type"
+                                >Charity type:</label
+                            >
+                            <select
+                                id="Charity-type"
+                                class="p-1 form-control"
+                                name="Charity-type"
+                            >
+                                <option value="Hunger Releif" selected>
+                                    Hunger Releif
+                                </option>
+                                <option value="Health">Health</option>
+                                <option value="Personal-need">
+                                    Personal Needs
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col position-relative">
+                            <label class="form-label me-3" for="uploadImage"
+                                >Your Logo:</label
+                            >
+                            <input
+                                class="form-control-sm"
+                                type="file"
+                                name="uploadImage"
+                                id="uploadImage"
+                            />
+                            <span class="error-message" id="Logo-error"></span>
+                        </div>
+
+                        <div class="col position-relative">
+                            <label class="form-label" for="uploadLicense"
+                                >Your License:</label
+                            >
+                            <input
+                                class="form-control-sm"
+                                type="file"
+                                name="uploadLicense"
+                                id="uploadLicense"
+                            />
+                            <span
+                                class="error-message"
+                                id="License-error"
+                            ></span>
+                        </div>
+                    </div>
+                    <div class="row row-cols-1">
+                        <div class="col position-relative">
+                            <label class="form-label" for="description"
+                                >Description:</label
+                            >
+                            <textarea
+                                class="form-control-sm"
+                                id="description"
+                                name="description"
+                            ></textarea>
+                            <span
+                                class="error-message desc-error-message"
+                                id="description-error"
+                            ></span>
+                        </div>
+                        <div class="col-md-7 mx-auto submit">
+                            <input type="submit" value="Add Charity" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script>
+            const charities = document.querySelectorAll(".item");
+            charities.forEach((charity) => {
+                charity.addEventListener("click", async (element) => {
+                    let id = charity.getAttribute("id");
+                    try {
+                        let result = await fetch(`/charities/${id}`, {
+                            method: "GET",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        });
+                        window.location.href = `/charities/${id}`;
+                    } catch (err) {
+                        console.log(err);
+                    }
+                });
+            });
+        </script>
+        <script>
+            const form = document.querySelector(".addCharityForm");
+            const descriptionError =
+                document.querySelector("#description-error");
+            const licenseError = document.querySelector("#License-error");
+            const logoError = document.querySelector("#Logo-error");
+            const bankAccountError =
+                document.querySelector("#bankAccount-error");
+            const nameError = document.querySelector("#name-error");
+            const phoneError = document.querySelector("#phone-error");
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                const formData = new FormData();
+                const charityName = form.name.value;
+                const phone = form.phone.value;
+                const bankAccount = form.bankAccount.value;
+                const charityType = form["Charity-type"].value;
+                const uploadImage = form.uploadImage.files[0];
+                const uploadLicense = form.uploadLicense.files[0];
+                const description = form.description.value;
+                console.log(charityType);
+                const subject = "Request Add Charity";
+                formData.append("uploadImage", uploadImage);
+                formData.append("uploadLicense", uploadLicense);
+                formData.append("phone", phone);
+                formData.append("bankAccount", bankAccount);
+                formData.append("description", description);
+                formData.append("charityName", charityName);
+                formData.append("charityType", charityType);
+                formData.append("subject", subject);
+                descriptionError.textContent = "";
+                licenseError.textContent = "";
+                logoError.textContent = "";
+                bankAccountError.textContent = "";
+                nameError.textContent = "";
+                phoneError.textContent = "";
+
+                try {
+                    const result = await fetch("/messages", {
+                        method: "POST",
+                        body: formData,
+                    });
+                    const data = await result.json();
+                    console.log(data);
+                    if (data.error) {
+                        descriptionError.textContent = data.error.description;
+                        licenseError.textContent = data.error.license;
+                        logoError.textContent = data.error.logo;
+                        bankAccountError.textContent = data.error.bankAccount;
+                        nameError.textContent = data.error.charityName;
+                        phoneError.textContent = data.error.phone;
+                        if (phoneError.textContent !== "") {
+                            $("#phone-error").fadeIn();
+                        } else {
+                            $("#phone-error").fadeOut();
+                        }
+                        if (nameError.textContent !== "") {
+                            $("#name-error").fadeIn();
+                        } else {
+                            $("#name-error").fadeOut();
+                        }
+
+                        if (descriptionError.textContent !== "") {
+                            $("#description-error").fadeIn();
+                        } else {
+                            $("#description-error").fadeOut();
+                        }
+
+                        if (licenseError.textContent !== "") {
+                            $("#License-error").fadeIn();
+                        } else {
+                            $("#License-error").fadeOut();
+                        }
+                        if (logoError.textContent !== "") {
+                            $("#Logo-error").fadeIn();
+                        } else {
+                            $("#Logo-error").fadeOut();
+                        }
+                        if (bankAccountError.textContent !== "") {
+                            $("#bankAccount-error").fadeIn();
+                        } else {
+                            $("#bankAccount-error").fadeOut();
+                        }
+                    } else location.assign("/");
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+        </script>
+
+        <!-- JQuery Google CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+            integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+            crossorigin="anonymous"
+        ></script>
+        <!-- My JS -->
+        <script src="/js/navigationBar.js"></script>
+        <script src="/js/home.js"></script>
+    </body>
+</html>

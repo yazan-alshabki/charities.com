@@ -1,0 +1,128 @@
+.charities-list {
+    color: #7c3e66;
+    background-color: #f6f2f2;
+    padding-left: 3%;
+    padding-right: 3%;
+    position: relative;
+    flex: 1;
+}
+.add-charity-item {
+    padding-top: 50px;
+    min-height: 425px;
+}
+.charities-list p {
+    color: #7d8285;
+}
+
+.charities-list h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 200px;
+    color: inherit;
+}
+
+.charities-list .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.charities-list .charities {
+    padding-bottom: 40px;
+}
+
+.charities-list .item {
+    text-align: center;
+    padding-top: 50px;
+    min-height: 425px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+.charities-list .item .name {
+    font-weight: bold;
+    margin-top: 28px;
+    margin-bottom: 8px;
+    color: inherit;
+}
+.charities-list .item .description {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+.charities-list .item img {
+    border-radius: 5%;
+    max-width: 100%;
+    max-height: 50%;
+    min-width: 100%;
+    min-height: 50%;
+}
+.charities-list .item:hover {
+    transform: scale(1.1);
+}
+.active {
+    animation: pulse 0.4s linear;
+}
+.arrowIcon {
+    font-size: medium;
+    margin-left: 1%;
+}
+.addCharityForm {
+    display: none;
+}
+.hint {
+    color: #7c3e66;
+}
+.hint a {
+    color: #ef9c9c !important;
+}
+.continue {
+    background-color: #7c3e66;
+    border-radius: 5px;
+    color: #f6f2f2;
+    border: none;
+}
+.continue:hover {
+    background-color: #ffbaba;
+    color: #7c3e66;
+}
+.plus-icon {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 5%;
+}
+#myButton {
+    cursor: cell;
+}
+#myButton:hover {
+    background-color: #bdb7b7cb;
+}
+#myForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f6f2f2;
+    border-radius: 3%;
+    display: none;
+    width: 45%;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+@media (max-width: 767px) {
+    .charities-list h2 {
+        margin-bottom: 25px;
+        padding-top: 25px;
+        font-size: 24px;
+    }
+}

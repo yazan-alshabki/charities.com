@@ -1,0 +1,247 @@
+body {
+    background-color: #7d486bba !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #7c3e66 !important;
+}
+
+.main {
+    flex: 1;
+    padding: 75px;
+    height: 600px;
+}
+.profile-img {
+    max-width: 120px;
+    min-width: 120px;
+    max-height: 120px;
+    min-height: 120px;
+}
+.m-r-0 {
+    margin-right: 0px;
+}
+.purple-font {
+    color: #823366;
+}
+.m-l-0 {
+    margin-left: 0px;
+}
+.user-profile {
+    border-radius: 5px 0 0 5px;
+}
+.info-section {
+    background-color: #f6f2f2;
+}
+.edit-profile-button {
+    background-color: #f6f2f2;
+    border: none;
+    color: #7c3e66;
+    padding: 5%;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-top: 10%;
+}
+
+.edit-profile-button:hover {
+    background-color: #ffe7cc;
+}
+.firstname,
+.lastname {
+    background-color: transparent;
+    border: solid #f6f2f27f 1px;
+    border-radius: 5px;
+    color: white;
+    width: 10px;
+    padding: 5px !important;
+    font-weight: 600;
+    font-size: larger;
+    margin: 3%;
+}
+
+.firstname {
+    float: right;
+}
+.lastname {
+    float: left;
+}
+#user-card-full {
+    overflow: hidden;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+    width: 80% !important;
+    margin-top: 9%;
+}
+
+.bg-purple {
+    background: linear-gradient(to right, #6e2a56, #c46ba5);
+}
+
+.user-profile {
+    padding: 20px 0;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.m-b-25 {
+    margin-bottom: 25px;
+}
+
+.img-radius {
+    border-radius: 5px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.card-block {
+    padding: 1.25rem;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+.m-b-20 {
+    margin-bottom: 20px;
+}
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.card .card-block p {
+    line-height: 25px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.text-muted {
+    color: #919aa3 !important;
+}
+
+.b-b-default {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.f-w-600 {
+    font-weight: 600;
+}
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+.p-b-5 {
+    padding-bottom: 5px !important;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+.m-t-40 {
+    margin-top: 20px;
+}
+
+#imageInput {
+    display: none;
+}
+
+.edit-field {
+    background-color: transparent;
+    border: solid #7c3e6670 1px;
+    border-radius: 5px;
+    padding: 1%;
+}
+.edit-field:focus {
+    border: solid #7c3e66 1px;
+    border-radius: 5px;
+}
+.city-select {
+    font-family: "Cairo", sans-serif;
+    background-color: #7c3e66;
+    color: white;
+    font-size: medium;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    appearance: none;
+    text-align: center;
+}
+
+.city-select:hover {
+    border-color: #999;
+}
+
+.city-select:focus {
+    border-color: #f6f6f6;
+    outline: none;
+}
+#confirm {
+    background-color: #7c3e66;
+    color: #f6f6f6;
+}
+#confirm:hover {
+    background-color: #ffe7cc;
+    color: #7c3e66;
+}
+#cancel {
+    border: solid #7c3e66;
+    color: #7c3e66;
+    background-color: #f6f6f6;
+}
+#cancel:hover {
+    background-color: #c85c8e;
+    color: #f6f6f6;
+    border-color: #c85c8e;
+}
+
+.error {
+    padding-left: 2%;
+    color: #da1b1b;
+    text-align: left;
+    font-family: "Readex Pro", sans-serif;
+    font-size: small;
+    font-weight: bold;
+}
+.firstname-error {
+    float: right;
+    color: rgb(255, 188, 188);
+    padding-left: 0px;
+}
+.image-error {
+    color: rgb(255, 188, 188);
+    padding-left: 0px;
+}
+.lastname-error {
+    float: left;
+    color: rgb(255, 188, 188);
+    padding-left: 0px;
+}
+@media only screen and (min-width: 1400px) {
+    p {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 640px) {
+    #user-card-full {
+        width: 100%;
+    }
+}

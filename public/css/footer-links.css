@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f6f2f2 !important;
+}
+.main {
+    color: #7c3e66;
+    background-color: #f6f2f2;
+    padding-top: 10%;
+    padding-left: 6%;
+    padding-right: 6%;
+    flex: 1;
+}
+.main .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 8%;
+}
+@media (max-width: 767px) {
+    .main {
+        padding-top: 35%;
+        margin-bottom: 15%;
+    }
+}
+.contact {
+    color: #f77676 !important;
+    text-decoration: none;
+    font-weight: bold;
+}

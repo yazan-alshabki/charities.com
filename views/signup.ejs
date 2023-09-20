@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign-up</title>
+  <!--Css link-->
+  <link rel="stylesheet" href="css/sign-up_style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo&family=Coming+Soon&family=Lemonada&family=Libre+Baskerville&family=Montserrat&family=Readex+Pro&family=Sacramento&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awsome script -->
+
+  <link rel="stylesheet" href="font awesome lib/css/all.css" />
+</head>
+
+<body>
+    <div class="leftBack">
+        <h1 class = "back-h1">Welcome to HopeHive</h1>
+          <img class="hand back-img" src="images/20599.jpg" alt="">
+      </div>
+    
+      <div class="rightBack"></div>
+      <div class = "shadow"></div>
+     
+  <div class="main">
+    <div class="left-col">
+      <h1>Welcome to HopeHive</h1>
+      <img class="hand" src="images/20599.jpg" alt="">
+    </div>
+
+    <div class="sign-up-box">
+      <form>
+        <input id="firstName" name="firstName" type="text" placeholder="First name" title="Enter your first name" dir="auto"  />
+        <input id="lastName" name="lastName" type="text" placeholder="Last name" title="Enter your last name" dir="auto"
+           />
+        <div class="firstName-error error"></div>
+
+        <div class="lastName-error error"></div>
+        
+        <input id="ID" type="tel" name="idNumber" placeholder="National ID number" title="Enter your National ID number"
+           />
+
+        <input type="tel" id="phone" name="phone" placeholder="Phone number" title="Enter your phone number" />
+
+        <div class="IdNumberError error"></div>
+
+        <div class="phoneError error"></div>
+
+
+        <div class="container">
+          <input id="email" name="email" type="text" placeholder="Email address" title="Enter your Email address"  />
+          <i class="fa-solid fa-envelope icon"></i>
+        </div class="container">
+        <div class="email-error error"></div>
+        <div class="container">
+          <input name="password" class="password first" type="password" placeholder="Password" title="Enter your password"  />
+          <i id="firstPass" class="fa-solid fa-eye show-password-icon"></i>
+        </div>
+        <div class="pass-error error"></div>
+        <div class="container">
+          <input name="passwordTwo" class="password second" type="password" placeholder="Re-enter password" title="Re-enter the password"  />
+          <i id="secondPass" class="fa-solid fa-eye show-password-icon"></i>
+        </div>
+        <div class="pass-error-two error"></div>
+        <div class="inline city-select">
+          <label id="city-label" for="city">City:</label>
+          <select name="city" id="city">
+            <option value="Damascus" selected>Damascus</option>
+            <option value="Rif Dimashq">Rif Dimashq</option>
+            <option value="Lattakia">Lattakia</option>
+            <option value="Tartous">Tartous</option>
+            <option value="Hama">Hama</option>
+            <option value="Homs">Homs</option>
+            <option value="Aleppo">Aleppo</option>
+            <option value="Daraa">Daraa</option>
+            <option value="As-Suwayda">As-Suwayda</option>
+            <option value="Quneitra">Quneitra</option>
+            <option value="Deir ez-Zor">Deir ez-Zor</option>
+            <option value="Raqqa">Raqqa</option>
+            <option value="Idlib">Idlib</option>
+            <option value="Al-Hasakah">Al-Hasakah</option>
+          </select>
+        </div>
+        <div class="inline">
+          <label id="account-type-label" for="account-type">Account type:</label>
+          <select name="account-type" id="account-type">
+            <option value="Donor" selected>Donor</option>
+            <option value="In Need">In Need</option>
+          </select>
+        </div>
+        <input type="submit" value="Register" />
+        <p class = "toLogin">Already have an account? <a href="/login">Log In</a></p>
+      </form>
+    </div>
+  </div>
+  <script>
+    const form = document.querySelector("form");
+    const emailError = document.querySelector(".email-error");
+    const passwordError = document.querySelector(".pass-error");
+    const firstNameError = document.querySelector(".firstName-error");
+    const lastNameError = document.querySelector(".lastName-error");
+    const IdNumberError = document.querySelector(".IdNumberError");
+    const phoneError = document.querySelector(".phoneError");
+    const passwordTwoError = document.querySelector('.pass-error-two');
+    form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    
+    emailError.textContent = "" ;
+    passwordError.textContent = "" ;
+    firstNameError.textContent = "" ;
+    lastNameError.textContent = "" ;
+    IdNumberError.textContent = "" ;
+    phoneError.textContent = "" ; 
+    passwordTwoError.textContent = "" ;
+
+    
+    const email = form.email.value;
+    const password = form.password.value;
+    const idNumber = form.idNumber.value;
+    const lastName = form.lastName.value;
+    const firstName = form.firstName.value;
+    const passwordTwo = form.passwordTwo.value;
+    const phone = form.phone.value;
+    const city = form.city.value;
+    const accountType = form["account-type"].value;
+    if(password != passwordTwo){
+        passwordTwoError.textContent = "The two passwords do not match";    
+    }else {
+    try {
+      const result = await fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+            idNumber,
+            passwordTwo,
+            phone,
+            city,
+            accountType
+        }),
+        headers: { "Content-Type": "application/json" }
+      });
+      const data = await result.json();
+      if (data.error ) {
+        console.log(data);
+        emailError.textContent = data.error.email ;
+        passwordError.textContent = data.error.password ;
+        firstNameError.textContent = data.error.firstName ;
+        lastNameError.textContent = data.error.lastName ;
+        IdNumberError.textContent = data.error.idNumber ;
+        phoneError.textContent = data.error.phone ;
+      }else location.assign("/login");
+      
+    } catch (err) {
+      console.log(err);
+    }
+}
+
+  });
+  
+
+  </script>
+  
+  <script src="js/sign-up.js"></script>
+</body>
+
+</html>

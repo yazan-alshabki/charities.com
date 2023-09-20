@@ -1,0 +1,301 @@
+body {
+    padding: 0%;
+    margin: 0%;
+    font-family: "Cairo", sans-serif;
+    position: relative;
+}
+
+h1 {
+    font-size: 2.4vw;
+    color: #f6f2f2;
+    margin-bottom: 2%;
+    font-family: "Libre Baskerville", serif;
+    text-align: center;
+    font-weight: bolder;
+}
+
+form {
+    margin: 0 auto;
+    padding-bottom: 1px;
+}
+
+select {
+    font-family: "Cairo", sans-serif;
+    background-color: #7c3e66;
+    color: white;
+    font-size: small;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+    margin-top: 3%;
+}
+
+select:hover {
+    border-color: #999;
+}
+
+select:focus {
+    border-color: #f6f6f6;
+    outline: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="tel"] {
+    border: 1px solid #7c3e66;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 2% 0%;
+    padding: 2%;
+    width: 100%;
+
+    background-color: transparent;
+    backdrop-filter: blur(25px);
+    color: black;
+    font-family: "Cairo", sans-serif;
+    font-size: 0.9vw;
+}
+
+input[type="password"] {
+    padding-right: 10%;
+}
+
+input[type="submit"] {
+    background-color: #7c3e66;
+    border: none;
+    border-radius: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: medium;
+    padding: 1%;
+    margin-top: 3%;
+    width: 45%;
+    font-family: "Cairo", sans-serif;
+}
+
+input[type="submit"]:hover {
+    background-color: #ffbaba;
+    color: black;
+}
+input::placeholder {
+    color: rgba(31, 30, 30, 0.837);
+}
+
+.container {
+    position: relative;
+}
+
+.error {
+    color: #da1b1b;
+    text-align: left;
+    font-family: "Readex Pro", sans-serif;
+    font-size: 0.8vw;
+    font-weight: bold;
+}
+
+.sign-up-box {
+    float: right;
+    text-align: center;
+    background-color: #f6f2f2;
+
+    font-family: "Cairo", sans-serif;
+}
+
+.left-col {
+    float: left;
+    background-color: #7c3e66;
+    position: relative;
+}
+
+.show-password-icon {
+    color: #7c3e66;
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    right: 3%;
+    font-size: 1vw;
+}
+.icon {
+    color: #7c3e66;
+    position: absolute;
+    top: 40%;
+    right: 3%;
+    font-size: 1vw;
+}
+
+.inline {
+    display: inline;
+}
+.city-select {
+    margin-right: 6%;
+}
+
+.main {
+    width: 71%;
+    position: absolute;
+    font-family: "Cairo", sans-serif;
+    margin: 3% 10%;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 33px 39px 42px rgb(40, 38, 38);
+
+    left: 4.5%;
+}
+.toLogin {
+    margin: 0px;
+    padding: 0px;
+}
+.left-col,
+.sign-up-box {
+    flex: 1;
+    min-width: 0;
+    padding: 20px;
+}
+.hand {
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    width: 80%;
+    height: 65%;
+}
+.rightBack {
+    background-color: #f7efe5;
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+.leftBack {
+    background-color: #7c3e66;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    position: relative;
+}
+.shadow {
+    background-color: rgb(70 65 65 / 63%);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+.back-h1 {
+    font-size: 4vw;
+    margin-top: 7%;
+}
+.back-img {
+    top: 30%;
+}
+#firstName,
+#lastName,
+#ID,
+#phone,
+.phoneError,
+.IdNumberError,
+.firstName-error,
+.lastName-error {
+    display: inline-block;
+    width: 47%;
+}
+
+#firstName,
+#ID,
+.IdNumberError,
+.firstName-error {
+    margin-right: 4%;
+}
+
+#city-label,
+#account-type-label {
+    color: #7c3e66;
+    font-size: 1.2vw;
+    padding-right: 2%;
+}
+a {
+    margin-left: 1%;
+    text-decoration: none;
+    color: #37306b;
+    font-size: 1vw;
+    font-weight: bold;
+}
+a:hover {
+    color: #ffbaba;
+}
+@media screen and (max-width: 600px) {
+    body {
+        margin: 0px;
+        padding: 0px;
+    }
+    h1 {
+        font-size: 25px;
+        margin-top: 0px;
+    }
+    .main {
+        margin: 0px;
+
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 120vh;
+        flex-direction: column;
+        box-shadow: none;
+    }
+
+    .left-col {
+        height: 5%;
+        display: block;
+    }
+    .sign-up-box {
+        height: 65%;
+    }
+    .hand {
+        top: 35%;
+        left: 12%;
+        width: 75%;
+        height: 55%;
+    }
+    .leftBack,
+    .rightBack,
+    .shadow {
+        display: none;
+    }
+    select {
+        display: inline-flex;
+        padding: 5px;
+        margin: 10px 0px;
+    }
+    input[type="text"],
+    input[type="password"],
+    input[type="tel"] {
+        font-size: 15px;
+    }
+    input[type="submit"] {
+        font-size: 1.25rem;
+        width: 90%;
+    }
+    .error {
+        font-size: 0.7rem;
+    }
+    .show-password-icon,
+    .icon {
+        font-size: 1rem;
+    }
+    label {
+        color: #7c3e66;
+    }
+
+    #city-label,
+    #account-type-label {
+        font-size: 15px;
+        padding: 0px;
+    }
+    p {
+        font-size: 0.875rem;
+    }
+    a {
+        font-size: 0.875rem;
+    }
+}

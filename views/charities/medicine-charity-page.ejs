@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity Page</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo&amp;family=Coming+Soon&amp;family=Lemonada&amp;family=Libre+Baskerville&amp;family=Montserrat&amp;family=Readex+Pro&amp;family=Sacramento&amp;display=swap"
+    rel="stylesheet" />
+  <!-- My Style -->
+  <link rel="stylesheet" href="/css/charity-page_style.css" />
+  <link rel="stylesheet" href="/css/Footer.css" />
+  <link rel="stylesheet" href="/css/NavigationBar.css" />
+  <!-- Bootstrap CDN-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/font awesome lib/css/all.min.css" />
+</head>
+
+<body id="page-top">
+    <%- include('../partials/navbar.ejs') -%>
+
+  <div class="shadow"></div>
+  <header class="first text-center">
+    
+    <div class="container">
+      <img class="d-block mx-auto mb-5 logo w-50" src="/uploads/<%= charity.logo %>" />
+      <h1 class="mb-5 charity text-purple fw-bold" data-doc="<%= charity._id %>"><%= charity.charityName %></h1>
+      <h5 class="mb-5 charity text-purple" ><%= charity.charityType %></h5>
+      
+    </div>
+  </header>
+  <section class="about">
+    <div class="container text-center">
+      <h2 class="text-uppercase mt-4 mb-5">About us</h2>
+      <div class="d-flex justify-content-center">
+        <p class="fs-5 mt-2">
+          <%= charity.description  %>
+         
+        </p>
+      </div>
+    </div>
+  </section>
+<section>
+  <div class="container text-center pt-5">
+    <h2 class="text-uppercase mt-5 mb-5 text-purple">Our Services</h2>
+    <% if(type === "Donor"){ %>
+
+    <div class = "row p-5">
+      <div id = "MedicineDonationButton" class="col-sm-6 col-lg-4 flip-card align-self-start mb-4">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/images/healthdonation.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> With this service you can help poor people who need expensive medicine or medical supplies by donating it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 flip-card align-self-center mb-4" id="VolunteeringButton">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/images/Happy people enjoying volunteering and giving help.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> With this service you can join our team to help people in-need and make the world a better place.</p>
+          </div>
+        </div>
+      </div>
+   
+      <div class="col-sm-6 col-lg-4 flip-card align-self-end mb-4" id="TrainingButton">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="/images/training.jpg" alt="">
+          </div>
+          <div class="flip-card-back">
+            <p> With this service we will teach you how to be a good volunteer.</p>
+          </div>
+        </div>
+      </div>
+
+    </div> 
+    <% }else { %>
+        <!--In Need Service -->
+        <div class="row p-5">
+            <div
+              id="MedicineRequestButton"
+              class="col-sm-6 col-lg-6 flip-card align-self-start mb-4"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="/images/healthdonation.jpg" alt="" />
+                </div>
+                <div class="flip-card-back">
+                  <p>
+                    With this service you can request any type of medicine or medical supplies that are available in our inventory. 
+                  </p>
+                </div>
+              </div>
+            </div>
+  
+            <div
+              id="EMTButton"
+              class="col-sm-6 col-lg-6 flip-card align-self-end mb-4"
+            >
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <img src="/images/healthcourse.jpg" alt="" />
+                </div>
+                <div class="flip-card-back">
+                  <p>
+                    With this service we will help you to improve your EMT skills. And you should take advantage of this course to be ready in every emergency.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+  </div>
+</section>
+<section class = "about">
+    <div class="container text-center">
+    <h2 class="text-uppercase mt-4 mb-5">More Information</h2>
+    <div class = "d-flex justify-content-center">
+      <p class = "d-block">
+        <span>
+            <b class = "fs-5">Bank account:</b> <br> <%= charity.bankAccount %> 
+          </span>
+          <br> <br>
+          <span>
+            <b class = "fs-5">Phone number:</b> <br><%= charity.phone %>   
+          </span>
+      </p>  
+    </div>
+  </div>
+</section>
+  
+
+<% if(admin){ %>
+<div class="charity-messages  position-fixed rounded">
+    <a class="text-center rounded text-white" href ="/charities/<%=charity._id%>/messages"><i class="fa-solid fa-message"></i></a>
+</div>
+<div class="admin-list position-fixed rounded">
+    <a class="text-center rounded text-white" href=""><i class="fa-solid fa-users"></i></a>
+  </div>
+<% } %>
+
+
+  
+    <%- include('../partials/footer') -%>
+    <!--In Need Forms-->
+    <div id="MedicineRequestService" class="p-0">
+        <button id="RequestcloseForm" class="closeForm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="MedicineRequestHintMessage" class="hintmsg text-center">
+          <p class="hint p-4 fs-7">
+            You can request anything from the select list, and we will review your request within 2 days.
+            If the quantity of your request is not available at this moment please reduce it.
+            By continuing, you acknowledge
+            that you have read and understood the terms and conditions.
+          </p>
+          <label class="form-label d-inline me-4 text-purple fw-bold" for="RequestType"
+            >Select the type of your Request:</label
+          >
+          <select
+            name="RequestType"
+            id="RequestType"
+            class="form-control p-1 d-inline w-50 mb-4 mt-3"
+          >
+            <option value="Medicine" selected>Medicine</option>
+            <option value="MedicalSupplies">Medical Supplies</option>
+          </select>
+          <div class="text-center">
+            <button id="MedicineRequestContinue" class="mx-auto mb-3 continue">
+              continue <i class="arrowIcon fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </div>
+        <p id="apologize" class="hint p-4 fs-6">
+            We apologize, our warehouse is empty at the moment and we will fill it as soon as possible.😥
+            <br>
+            Please check again later. 
+        </p>
+        
+        <form class="MedicineRequestForm p-3">
+            
+          <div class="container">
+            <div class="RequestMedicineSelect mt-2 mb-4">
+              <label class="form-label d-inline me-4" for="RequestMedicineName"
+                >Select Medicine name:</label
+              >
+              <select
+                class="form-control p-1 d-inline w-50 mb-2 "
+                name="RequestMedicineName"
+                id="RequestMedicineName"
+                data-doc="<%= medicine %>"
+              >
+              <% objects.forEach(element => { %>
+                <% if(element.objectClass ==="Medicine"){%>
+                    <option value="<%= element.objectType %>"><%= element.objectType %></option>
+                <% } %>
+            <% })%>
+            
+              </select>
+            </div>
+            <div class="RequestMedicalSuppliesSelect mt-2 mb-4">
+              <label class="form-label d-inline me-4" for="RequestMedicalSupplies"
+                >Select medical supplies:</label
+              >
+              <select
+                class="form-control p-1 d-inline w-50 mb-2"
+                name="RequestMedicalSupplies"
+                id="RequestMedicalSupplies"
+                data-doc="<%= medicalSupplies %>"
+              >
+              <% objects.forEach(element => { %>
+                <% if(element.objectClass ==="Medical Supplies"){%>
+                    <option value="<%= element.objectType %>"><%= element.objectType %></option>
+                <% } %>
+                <% })%>
+            
+              
+              </select>
+            </div>
+           
+  
+            <div class="position-relative mb-4">
+              <label class="form-label" for="RequestQuantity">Quantity:</label>
+              <input
+                class="form-control"
+                type="tel"
+                id="RequestQuantity"
+                name="RequestQuantity"
+                
+              />
+              <span class="error-message requestError"></span>
+            </div>
+  
+            <div class="mx-auto submit">
+              <button type="submit">
+                Send request <i class="fa-solid fa-paper-plane paperPlan"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+  
+      
+  
+      <div id="EMTService" class="p-0">
+        <button id="EMTcloseForm" class="closeForm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="EMTHintMessage" class="hintmsg">
+          <p class="hint p-3 fs-6">
+            We are providing training for Emergency situation to make you ready for any kind of emergency.
+            <br />
+            <br />
+            By enrolling, you acknowledge
+            that you have read and understood the terms and conditions and you
+            agree to abide by these training guidelines and fulfill your
+            responsibilities as a volunteer to the best of your abilities.
+            <br />
+            <br />
+            We will review your request within two days, and we will send you the
+            Training Program after that.
+          </p>
+          <form class="EMTForm p-3">
+            <div class="container">
+              <div class="mx-auto submit">
+                <button type="submit" class="course">Enroll</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    <!-- donation -->
+    <div id="VolunteeringService" class="p-0">
+        <button id="VolunteeringcloseForm" class="closeForm">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="VolunteeringHintMessage" class="hintmsg">
+          <p class="hint p-4 fs-6">
+            By continuing, you acknowledge that you have read and understood the
+            terms and conditions and you have been informed of the potential risks
+            associated with volunteering and hereby agree to release and hold
+            harmless the charity from any liability for injuries or damages that
+            may arise during your volunteer activities.
+          </p>
+          
+          <div class="text-center">
+            <button id="VolunteeringContinue" class="mx-auto mb-3 continue">
+              continue <i class="arrowIcon fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </div>
+        <form class="volunteeringForm p-3">
+          <div class="container">
+            <div class="position-relative mb-2">
+              <label class="form-label d-inline me-4" for="days"
+                >You are available on:</label
+              >
+              <div class="row">
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input type="checkbox" id="Sunday" name="days" value="Sunday" />
+                  <label for="Sunday">Sunday</label>
+                 </div>
+                 <div class = "col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input type="checkbox" id="Monday" name="days" value="Monday" />
+                  <label for="Monday">Monday</label>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input
+                    type="checkbox"
+                    id="Tuesday"
+                    name="days"
+                    value="Tuesday"
+                  />
+                  <label for="Tuesday">Tuesday</label>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input
+                    type="checkbox"
+                    id="Wednesday"
+                    name="days"
+                    value="Wednesday"
+                  />
+                  <label for="Wednesday">Wednesday</label>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input
+                    type="checkbox"
+                    id="Thursday"
+                    name="days"
+                    value="Thursday"
+                  />
+                  <label for="Thursday">Thursday</label>
+                  </div>
+                  <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input type="checkbox" id="Friday" name="days" value="Friday" />
+                  <label for="Friday">Friday</label>
+                </div>
+                <div class="col-6 col-sm-6 col-md-6 col-lg-3">
+                  <input
+                    type="checkbox"
+                    id="Saturday"
+                    name="days"
+                    value="Saturday"
+                  />
+                  <label for="Saturday">Saturday</label>
+                </div>
+              </div>
+              <span class="error-message available-error"></span>
+            </div>
+            <div class = "row row-col-2 mb-2">
+                <div class="col position-relative">
+                  <label class="form-label" for="availableHours"
+                  >How many hours per day:</label
+                >
+                <input
+                  class="form-control"
+                  type="tel"
+                  id="availableHours"
+                  name="availableHours"
+                  
+                />
+                <span class="error-message hours-error"></span>
+                </div>
+                <div class="col position-relative">
+                  <label class="form-label" for="VolunteerExperience"
+                    >Volunteer Experience:</label
+                  >
+                  <input
+                    class="form-control"
+                    type="tel"
+                    id="VolunteerExperience"
+                    name="VolunteerExperience"
+                    
+                  />
+                  <span class="error-message Experience-error"></span>
+                </div>
+              </div>
+              <div class = "mb-2">
+                <label id="WorkStatusLabel" class="form-label me-1" for="WorkStatus"
+                  >Work status:</label
+                >
+                <select
+                  id="WorkStatus"
+                  class="p-1 d-inline form-control w-50 formSelect"
+                  name="WorkStatus"
+                >
+                  <option value="Employee" selected>Employee</option>
+                  <option value="Unemployed">Unemployed</option>
+                  <option value="Student">Student</option>
+                </select>
+              </div>
+              <div class = "mb-2">
+                <label
+                  id="RolePreferencesLabel"
+                  class="form-label me-1"
+                  for="RolePreferences"
+                  >Role Preferences:</label
+                >
+                <select
+                  id="RolePreferences"
+                  class="p-1 d-inline form-control w-50 formSelect"
+                  name="RolePreferences"
+                >
+                  <option value="Administrative" selected>Administrative</option>
+                  <option value="VolunteerCoordinator">
+                    Volunteer Coordinator
+                  </option>
+                  <option value="Distributor">Distributor</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="SocialMediaCoordinator">
+                    Social media coordinator
+                  </option>
+                </select>
+              </div>
+              
+              <div class="mx-auto submit">
+                <button type="submit">
+                  Send form <i class="fa-solid fa-paper-plane paperPlan"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div id="TrainingService" class="p-0">
+            <button id="TrainingcloseForm" class="closeForm">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="TrainingHintMessage" class="hintmsg">
+              <p class="hint p-4 fs-6">
+                By continuing, you acknowledge that you have read and understood the
+                terms and conditions and you agree to abide by these training guidelines and
+                fulfill your responsibilities as a volunteer to the best of your abilities.
+                <br>
+                <br>
+                We will review your request within two days, and we will send you the Training Program after that. 
+              </p>
+              <form class="TrainingForm p-3">
+                <div class="container">
+                  <div>
+                    <label
+                      id="TrainingLabel"
+                      class="form-label me-5 text-purple"
+                      for="TrainingType"
+                      >Training Type:</label
+                    >
+                    <select
+                      id="TrainingType"
+                      class="p-1 d-inline form-control w-50 formSelect"
+                      name="TrainingType"
+                    >
+                      <option value="Administrative" selected>Administrative</option>
+                      <option value="VolunteerCoordinator">
+                        Volunteer Coordinator
+                      </option>
+                     
+                      <option value="Marketing">Marketing</option>
+                      <option value="SocialMediaCoordinator">
+                        Social media coordinator
+                      </option>
+                    </select>
+                  </div>
+                  <div class="mx-auto submit">
+                    <button type="submit">
+                      Enroll
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+
+
+   <div id="MedicineDonationService" class="p-0">
+    <button class = "closeForm" id="DonationcloseForm"><i class="fa-solid fa-xmark"></i></button>
+    <div id="MedicineDonationHintMessage" class="hintmsg text-center">
+      <p class="hint p-4 ">
+        If the type of the medicine or the medical supplies are already in our inventory please select it from the list.
+        if the type is not available in the list you can add it by selecting the add new option from the list.
+        By continuing, you acknowledge that you have read and understood the
+        terms and conditions.
+        We will review your request within two days.
+      </p>
+      <label class="form-label d-inline me-4 text-purple fw-bold" for="DonationType">Select the type of your donation:</label>
+        <select name="DonationType" id="DonationType" class = "form-control p-1 d-inline w-50 mb-4 mt-3">
+          <option value="Medicine" selected>Medicine</option>
+          <option value="MedicalSupplies">Medical Supplies</option>
+        </select>
+      <div class = "text-center">
+        <button id="MedicineDonationContinue" class="mx-auto mb-3 continue">
+          continue <i class="arrowIcon fa-solid fa-arrow-right-long"></i>
+        </button>
+      </div>
+    </div>
+    <form class="MedicineDonationForm p-3">
+      <div class="container">
+          <div class="MedicineSelect mt-2 mb-4">
+            
+            <% if(medicine === 0){%>
+                <select
+                class="form-control p-1 d-inline w-50 mb-2 formSelect d-none newOptionSelect"
+                name="MedicineName"
+                id="MedicineName"
+              >    
+            <% }else { %>
+                <label class="form-label d-inline me-4" for="MedicineName">Select Medicine name:</label>
+            
+                <select
+                class="form-control p-1 d-inline w-50 mb-2 formSelect  newOptionSelect"
+                name="MedicineName"
+                id="MedicineName"
+              >    
+            <% } %>
+            <% objects.forEach(element => { %>
+                <% if(element.objectClass ==="Medicine"){%>
+                    <option value="<%= element.objectType %>"><%= element.objectType %></option>
+                <% } %>
+            <% })%>
+                <option value="AddNewOption">Add a new option</option>
+            </select>
+          </div>
+          <div class="MedicalSuppliesSelect mt-2 mb-4">
+            <% if(medicalSupplies === 0){%>
+                <select
+                class="form-control p-1 d-inline w-50 mb-2 d-none newOptionSelect"
+                name="MedicalSupplies"
+                id="MedicalSupplies"
+                >
+            <% }else { %>
+                <label class="form-label d-inline me-4" for="MedicalSupplies"
+              >Select medical supplies:</label
+            >
+            
+                <select
+                class="form-control p-1 d-inline w-50 mb-2 newOptionSelect"
+                name="MedicalSupplies"
+                id="MedicalSupplies"
+                >
+            <% } %>
+
+            <% objects.forEach(element => { %>
+                <% if(element.objectClass ==="Medical Supplies"){%>
+                    <option value="<%= element.objectType %>"><%= element.objectType %></option>
+                <% } %>
+            <% })%>
+              <option value="AddNewOption">Add a new option</option>
+            </select>
+          </div>
+          <div class="position-relative mb-4">
+          <label id= "newOptionLabel" class="form-label" for="newOption">Add new option:</label>
+          <input class="form-control" type="text" id="newOption" name="newOption">  
+            <span class="error-message typeError"></span>
+          </div>
+        
+        
+        <div class="position-relative mb-4">
+          <label class="form-label" for="quantity">Quantity:</label>
+          <input class="form-control" type="tel" id="quantity" name="quantity" >
+          <span class="error-message quantityError"></span>
+        </div>
+          <div class="mx-auto submit">
+            <button type="submit">Send form <i class="fa-solid fa-paper-plane paperPlan"></i></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+        const MedicineDonationForm = document.querySelector(".MedicineDonationForm");
+        const quantityError = document.querySelector(".quantityError");
+        const typeError = document.querySelector(".typeError");
+        const charity = document.querySelector(".charity");
+        const donationType = document.querySelector("#DonationType");
+        const id = charity.getAttribute("data-doc");
+        const adminList = document.querySelector(".admin-list");
+        if(adminList){    
+        adminList.addEventListener("click" , async (event) =>{
+            event.preventDefault();
+            location.assign(`/charities/${id}/admins`);           
+        });
+        }
+
+        MedicineDonationForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                quantityError.textContent = "";
+                typeError.textContent = "";
+
+                const id = charity.getAttribute("data-doc");
+                if(donationType.value === "Medicine"){
+                    let type = MedicineDonationForm.MedicineName.value;
+                    if(type === "AddNewOption"){
+                        type = MedicineDonationForm.newOption.value;
+                    }
+                    const quantity = MedicineDonationForm.quantity.value;
+                    try {
+                        
+                        const result = await fetch(`/charities/${id}`, {
+                            method: "POST",
+                            body: JSON.stringify({
+                            charity : id,
+                            type : type,
+                            quantity:quantity,
+                            form:"Donation",
+                            class : "Medicine"
+                            
+                            }),
+                            headers: { "Content-Type": "application/json" },
+                        });
+                        const data = await result.json();
+                        if(data.error){
+                            quantityError.textContent = data.error.quantity;
+                            typeError.textContent = data.error.type;
+                            if (quantityError.textContent !== "") {
+                                $(".quantityError").fadeIn();
+                            } else {
+                                $(".quantityError").fadeOut();
+                            }
+                            if (typeError.textContent !== "") {
+                                $(".typeError").fadeIn();
+                            } else {
+                                $(".typeError").fadeOut();
+                            }
+
+
+
+                        }else {
+                            location.assign(`/charities/${id}`);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+
+                }else {
+                    let type = MedicineDonationForm.MedicalSupplies.value;
+                    if(type === "AddNewOption"){
+                        type = MedicineDonationForm.newOption.value;
+                    }
+                    const quantity = MedicineDonationForm.quantity.value;
+                    try {
+                        const result = await fetch(`/charities/${id}`, {
+                            method: "POST",
+                            body: JSON.stringify({
+                            charity : id,
+                            type : type,
+                            quantity:quantity,
+                            form:"Donation",
+                            class : "Medical Supplies"
+                            }),
+                            headers: { "Content-Type": "application/json" },
+                        });
+                        const data = await result.json();
+                        if(data.error){
+                            quantityError.textContent = data.error.quantity;
+                            typeError.textContent = data.error.type;
+                            if (quantityError.textContent !== "") {
+                                $(".quantityError").fadeIn();
+                            } else {
+                                $(".quantityError").fadeOut();
+                            }
+                            if (typeError.textContent !== "") {
+                                $(".typeError").fadeIn();
+                            } else {
+                                $(".typeError").fadeOut();
+                            }
+                            
+                        }else {
+                            location.assign(`/charities/${id}`);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    
+                }
+            });
+        
+            const volunteeringForm = document.querySelector(".volunteeringForm");
+            const availableError = document.querySelector(".available-error");
+            const hoursError = document.querySelector(".hours-error");
+            let ExperienceError = document.querySelector(".Experience-error");
+
+            volunteeringForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                availableError.textContent = "";
+                hoursError.textContent = "";
+                ExperienceError.textContent = "";
+                const id = charity.getAttribute("data-doc");
+
+                let days = [];
+                const checkBoxes = document.querySelectorAll('input[name="days"]:checked');
+                checkBoxes.forEach(function(checkbox) {
+                    days.push(checkbox.value);
+                }); 
+                const availableHours = volunteeringForm.availableHours.value;
+                const VolunteerExperience = volunteeringForm.VolunteerExperience.value;
+                const WorkStatus = volunteeringForm.WorkStatus.value;
+                const RolePreferences = volunteeringForm.RolePreferences.value;
+                try {
+                    const result = await fetch(`/charities/${id}`, {
+                        method: "POST",
+                        body: JSON.stringify({
+                        charity : id,
+                        availableHours : availableHours,
+                        VolunteerExperience:VolunteerExperience,
+                        WorkStatus:WorkStatus,
+                        RolePreferences:RolePreferences,
+                        days:days,
+                        form:"Volunteering"
+                        }),
+                        headers: { "Content-Type": "application/json" },
+                    });
+                    const data = await result.json();
+                    if(data.error){
+                        availableError.textContent = data.error.available;
+                        hoursError.textContent = data.error.hours;
+                        ExperienceError.textContent = data.error.experience;
+                        if (availableError.textContent !== "") {
+                                $(".available-error").fadeIn();
+                        } else {
+                                $(".available-error").fadeOut();
+                        }
+                        if (hoursError.textContent !== "") {
+                                $(".hours-error").fadeIn();
+                        } else {
+                                $(".hours-error").fadeOut();
+                        }
+                        if (ExperienceError.textContent !== "") {
+                                $(".Experience-error").fadeIn();
+                        } else {
+                                $(".Experience-error").fadeOut();
+                        }
+                        
+
+
+                        
+                    }else {
+                        location.assign(`/charities/${id}`);
+                    }
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+            const TrainingForm = document.querySelector(".TrainingForm");
+            TrainingForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                const id = charity.getAttribute("data-doc");
+                const TrainingType = TrainingForm.TrainingType.value;
+                try {
+                    const result = await fetch(`/charities/${id}`, {
+                        method: "POST",
+                        body: JSON.stringify({
+                        charity : id,
+                        TrainingType:TrainingType,   
+                        form:"Training"
+                        }),
+                        headers: { "Content-Type": "application/json" },
+                    });
+                    location.assign(`/charities/${id}`);
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+
+            const RequestType = document.querySelector("#RequestType");
+            const MedicineRequestForm = document.querySelector(".MedicineRequestForm");
+            let requestError = document.querySelector(".requestError");
+            
+            MedicineRequestForm.addEventListener("submit", async (event) => {
+                event.preventDefault();
+                
+                requestError.textContent = "";
+                const id = charity.getAttribute("data-doc");
+                if(RequestType.value === "Medicine"){
+                    const RequestQuantity = MedicineRequestForm.RequestQuantity.value;
+                    let type = MedicineRequestForm.RequestMedicineName.value;
+                    try {
+                        if (RequestQuantity.trim() ==="") {
+                            requestError.textContent = `Please enter a quantity`;
+                            if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+
+                        return new Error("error");
+                        }else {
+                                let validate;
+                                const regular = /^\d+$/;
+                                const string = RequestQuantity;
+                                if(regular.test(string) && parseInt(RequestQuantity) > 0)validate=true;
+                                else validate = false;
+
+                                if (validate) {
+                                    requestError.textContent = "";
+                                    if (requestError.textContent !== "") {
+                                    $(".requestError").fadeIn();
+                                    }else {
+                                        $(".requestError").fadeOut();
+                                    }
+                                    
+                                } else {
+                                    requestError.textContent = `Please enter an integer number greater than 0`;
+                                    if (requestError.textContent !== "") {
+                                    $(".requestError").fadeIn();
+                                    }else {
+                                        $(".requestError").fadeOut();
+                                    }
+                                    return new Error("error");
+
+
+                                }
+                            }
+                        const result = await fetch(`/charities/${id}`, {
+                            method: "POST",
+                            body: JSON.stringify({
+                            charity : id,
+                            objectType : type,
+                            requestQuantity:RequestQuantity,
+                            form:"Request Medicine",
+                            class : "Medicine"
+                            }),
+                            headers: { "Content-Type": "application/json" },
+                        });
+                        const data = await result.json();
+                        if(data.error){
+                            requestError.textContent = data.error.quantity;
+                            if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+                            
+                        }else {
+                            location.assign(`/charities/${id}`);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    
+
+                }else {
+                    let type = MedicineRequestForm.RequestMedicalSupplies.value;
+                    const RequestQuantity = MedicineRequestForm.RequestQuantity.value;
+                    
+                    try {
+                         if (RequestQuantity.trim() ==="") {
+                            requestError.textContent = `Please enter a quantity`;
+                            if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+                            
+                        return new Error("error");
+                        }else {
+                                let validate;
+                                const regular = /^\d+$/;
+                                const string = RequestQuantity;
+                                if(regular.test(string) && parseInt(RequestQuantity) > 0)validate=true;
+                                else validate = false;
+                            
+                                if (validate) {
+                                    requestError.textContent = "";
+                                    if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+                            
+                                } else {
+                                    requestError.textContent = `Please enter an integer number greater than 0`;
+                                    if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+                            
+                                    return new Error("error");
+
+                                }
+                            }
+                        const result = await fetch(`/charities/${id}`, {
+                            method: "POST",
+                            body: JSON.stringify({
+                            charity : id,
+                            requestQuantity:RequestQuantity,
+                            form:"Request Medical Supplies",
+                            class : "Medical Supplies",
+                            objectType:type
+                            }),
+                            headers: { "Content-Type": "application/json" },
+                        });
+                        const data = await result.json();
+                        if(data.error){
+                            requestError.textContent = data.error.quantity;
+                            if (requestError.textContent !== "") {
+                                $(".requestError").fadeIn();
+                            }else {
+                                $(".requestError").fadeOut();
+                            }
+                            
+                        }else {
+                            location.assign(`/charities/${id}`);
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+                    
+                }
+            });
+
+            const course = document.querySelector(".course");
+            course.addEventListener("click" ,async (event) => {
+                event.preventDefault();
+                const id = charity.getAttribute("data-doc");
+                try {
+                    const result = await fetch(`/charities/${id}`, {
+                        method: "POST",
+                        body: JSON.stringify({
+                        charity : id,
+                        form:"Health Course"
+                        }),
+                        headers: { "Content-Type": "application/json" },
+                    });
+                    location.assign(`/charities/${id}`);
+                } catch (err) {
+                    console.log(err);
+                }
+
+            });
+
+                
+  </script>
+  <!-- JQuery Google CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+  <!-- My JS -->
+  <script src="/js/navigationBar.js"></script>
+  <script src="/js/charity-page.js"></script>
+</body>
+
+</html>

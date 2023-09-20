@@ -1,0 +1,371 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f6f2f2 !important;
+    position: relative;
+}
+
+.first {
+    flex: 1;
+    padding-top: 150px;
+}
+.about {
+    background-color: #ff97c7;
+    color: #4e0840;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+.charity-messages a {
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2rem;
+    margin: 9.5px;
+}
+.charity-messages {
+    background-color: #ffbaba !important;
+    cursor: pointer;
+    color: #f6f2f2;
+    border: none !important;
+    position: fixed;
+    right: 1rem;
+    bottom: 4rem;
+    z-index: 1042;
+}
+.about h2,
+.about b {
+    color: #4e0840;
+}
+.logo {
+    border: solid #7c3e66;
+}
+.shadow {
+    background-color: rgba(60, 57, 57, 0.63);
+    backdrop-filter: blur(8px);
+    right: 0px;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    position: absolute;
+    display: none;
+    z-index: 1;
+}
+#FoodDonationService,
+#VolunteeringService,
+#TrainingService,
+#MedicineDonationService,
+#PersonalNeedsDonationService,
+#FoodRequestService,
+#MedicineRequestService,
+#FarmingService,
+#MedicineRequestService,
+#EMTService,
+#PersonalNeedsRequestService,
+#LifeSkillsService {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f6f2f2;
+    border-radius: 15px;
+    display: none;
+    width: 45%;
+    z-index: 2;
+}
+.closeForm {
+    background-color: transparent;
+    color: #7c3e66;
+    float: right;
+    margin-top: 1%;
+    margin-right: 1%;
+    border: none !important;
+}
+.closeForm:hover,
+.closeForm:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.hint {
+    color: #7c3e66;
+}
+.hint a {
+    color: #ef9c9c !important;
+}
+.continue {
+    background-color: #7c3e66;
+    border-radius: 5px;
+    color: #f6f2f2;
+    border: none;
+}
+.continue:hover {
+    background-color: #ffbaba;
+    color: #7c3e66;
+}
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    backface-visibility: hidden;
+    /* border: 1px solid #7c3e66; */
+}
+
+.flip-card-back {
+    background-color: #7c3e66;
+    color: #f6f2f2;
+    transform: rotateY(180deg);
+}
+.flip-card-front img {
+    width: 100%;
+    height: 300px;
+}
+.flip-card-back p {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+.arrowIcon {
+    font-size: medium;
+    margin-left: 1%;
+}
+.foodDonationForm {
+    display: none;
+}
+.submit {
+    text-align: center !important;
+}
+label {
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+
+input[type="text"],
+input[type="tel"] {
+    border: 1px solid #7c3e66;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 1%;
+    width: 100%;
+    background-color: transparent;
+    color: black;
+    font-family: "Cairo", sans-serif;
+}
+#newOption,
+#newOptionLabel {
+    display: none;
+}
+
+.paperPlan {
+    color: #f6f2f2;
+}
+#type,
+#Perishability,
+#WorkStatus,
+#RolePreferences,
+#TrainingType,
+#MedicineName,
+#ObjectType,
+#MedicalSupplies,
+#DonationType,
+#FoodType,
+#RequestType,
+#RequestMedicineName,
+#RequestMedicalSupplies,
+#RequestObjectType,
+#LifeSkillsType {
+    font-family: "Cairo", sans-serif;
+    background-color: #7c3e66;
+    color: white;
+    font-size: medium;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    text-align: center;
+}
+.admin-list a {
+    width: 2.2rem;
+    height: 2.2rem;
+    line-height: 2rem;
+    margin: 8px;
+}
+
+.admin-list {
+    background-color: #ffbaba !important;
+    cursor: pointer;
+    color: #f6f2f2;
+    border: none !important;
+    position: fixed;
+    right: 1rem;
+    bottom: 6.5rem;
+    z-index: 1042;
+}
+#type:hover,
+#Perishability:hover,
+#WorkStatus:hover,
+#RolePreferences:hover,
+#TrainingType:hover,
+#MedicineName:hover,
+#ObjectType:hover,
+#MedicalSupplies:hover,
+#DonationType:hover,
+#FoodType:hover,
+#RequestType:hover,
+#RequestMedicineName:hover,
+#RequestMedicalSupplies:hover,
+#RequestObjectType:hover,
+#LifeSkillsType:hover {
+    border-color: #999;
+}
+
+#type:focus,
+#Perishability:focus,
+#WorkStatus:focus,
+#RolePreferences:focus,
+#TrainingType:focus,
+#MedicineName:focus,
+#ObjectType:focus,
+#MedicalSupplies:focus,
+#DonationType:focus,
+#FoodType:focus,
+#RequestType:focus,
+#RequestMedicineName:focus,
+#RequestMedicalSupplies:focus,
+#RequestObjectType:focus,
+#LifeSkillsType:focus {
+    border-color: #f6f6f6;
+    outline: none;
+}
+
+.MedicineDonationForm {
+    display: none;
+}
+.PersonalNeedsDonationForm {
+    display: none;
+}
+.error-message {
+    text-align: center;
+    position: absolute;
+    top: 105%;
+    left: 20%;
+    width: 60%;
+    padding: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: normal;
+    z-index: 1;
+}
+.error-message:before {
+    content: "";
+    position: absolute;
+    right: 50%;
+    top: -10px;
+    margin-right: -10px;
+    border-style: solid;
+    border-width: 0px 10px 10px 10px;
+    border-color: transparent transparent #f8d7da transparent;
+}
+input:focus + .error-message {
+    display: none;
+}
+textarea:focus + .error-message {
+    display: none;
+}
+button[type="submit"] {
+    background-color: #7c3e66;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 2%;
+    margin-top: 3%;
+    font-family: "Cairo", sans-serif;
+}
+.hint {
+    font-size: 1rem !important;
+}
+button[type="submit"]:hover {
+    background-color: #ffbaba;
+    color: black;
+}
+
+input[type="checkbox"] {
+    accent-color: #7c3e66;
+}
+.volunteeringForm {
+    display: none;
+}
+.foodRequestForm {
+    display: none;
+}
+.MedicineRequestForm {
+    display: none;
+}
+.PersonalNeedsRequestForm {
+    display: none;
+}
+.text-purple {
+    color: #7c3e66;
+}
+.about p {
+    width: 50%;
+}
+@media screen and (max-width: 640px) {
+    #FoodDonationService,
+    #VolunteeringService,
+    #TrainingService,
+    #MedicineDonationService,
+    #PersonalNeedsDonationService,
+    #FoodRequestService,
+    #MedicineRequestService,
+    #FarmingService,
+    #MedicineRequestService,
+    #EMTService,
+    #PersonalNeedsRequestService,
+    #LifeSkillsService {
+        width: 90% !important;
+    }
+    label {
+        margin-top: 1.5%;
+    }
+}
+@media (max-width: 768px) {
+    .about p {
+        width: 80% !important;
+    }
+    .hint {
+        font-size: 0.7rem !important;
+    }
+}
+#apologize {
+    display: none;
+}
